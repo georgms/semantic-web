@@ -24,10 +24,13 @@ Handlebars.registerHelper('eqWS', function(sex){
   return sex;
 })
 
-$('#search').on("keyup", function(){
+$('#search').on("keyup", function(e){
   if($('#search').val().length >= 3){
     $('#wrapper').addClass("smooth");
     search($('#search').val());
+  }
+  if(e.which === 13){
+    $('#search').blur();
   }
 });
 
