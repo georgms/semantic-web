@@ -4,11 +4,9 @@ const fs = require('fs');
 
 
 
-fs.readFile('seed.json', (err, data) => {
+fs.readFile('seed.json', 'utf8', (err, data) => {
 	if (err) throw err;
-	const StringDecoder = require('string_decoder').StringDecoder;
-	const decoder = new StringDecoder('utf8');
-	var daten = JSON.parse(decoder.write(data));
+	const daten = JSON.parse(data);
 
 	client.autoCommit = true;
 
