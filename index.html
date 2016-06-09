@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Personen Suche</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Personen Suche</h1>
+  
+    <script id="some-template" type="text/x-handlebars-template">
+      <div class="results">
+        {{#persons}}
+          <div class="{{eqWS sex}}">
+            <div class="img">{{#if image_id}}{{image image_id 'left'}}{{/if}}</div>
+            <div class="content">
+              <h3>{{forename}}{{surname}}</h3>
+              {{type}} {{eqKA function}}<br>
+              {{#if email}}E-Mail: {{email}}{{/if}}
+              {{#if id}}FHS-Nummer: {{id}}{{/if}}
+            </div>
+          </div>
+        {{/persons}}
+      </div>
+    </script>
+
+  <script src="index.js"></script>
+</body>
+</html>

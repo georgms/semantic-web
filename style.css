@@ -1,0 +1,54 @@
+.female{
+  border: 1px solid rgba(255,0,0,.2);
+}
+
+.male{
+  border: 1px solid rgba(0,125,255,.2);
+}
+
+.ws{
+  border: 1px solid rgba(0,0,0,.2);
+}
+
+.female:hover{
+  outline: 4px solid rgba(255,0,0,.2);
+}
+
+.male:hover{
+  outline: 4px solid rgba(0,125,255,.2);
+}
+
+.ws:hover{
+  outline: 4px solid rgba(0,0,0,.2);
+}
+
+.results{
+  display: flex;
+  justify-content: space-between;
+}
+
+.results > div {
+  margin: 4px;
+  width: 30%;
+}
+
+.img {
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.img img {
+  width: 100%;
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+h3 {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
