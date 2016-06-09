@@ -1,3 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300);
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+  STYLE
+*/
+
+body {
+  font-family: Roboto;
+  background-color: #F8F8F8;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+
+p {
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 700;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #95989A;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+header > img {
+  float: left;
+  margin-left: 20px;
+}
+
+header .button-group {
+  height: 25px;
+  float: left;
+  margin-left: 20px;
+}
+
+header input {
+  margin-left: 20px;
+  border: 1px solid #818181;
+  padding: 5px;
+  border-radius: 3px 0 0 3px;
+  width: 340px;
+  height: 25px;
+  box-sizing: border-box;
+  float: left;
+}
+
+header button {
+  border: 1px solid #818181;
+  background-color: #BDBDBD;
+  padding: 3px;
+  border-radius: 0 3px 3px 0;
+  height: 25px;
+  width: 45px;
+  border-left: none;
+}
+
+header button:active {
+  background-color: #ACACAC;
+}
+
 .female{
   border: 1px solid rgba(255,0,0,.2);
 }
@@ -25,11 +142,12 @@
 .results{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .results > div {
   margin: 4px;
-  width: 30%;
+  width: 32%;
 }
 
 .img {
@@ -51,4 +169,6 @@ h3 {
   padding: 0;
   margin-top: 0;
   margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 1.5em;
 }

@@ -1,30 +1,45 @@
 var source = $("#some-template").html(); 
 var template = Handlebars.compile(source); 
 
-Handlebars.registerHelper('image', function(fhs, className, image_id) {
-  var cssClass = '';
-  if(className != null) {
-    cssClass = 'class="'+className+'" ';
-  }
-  if( image_id[0] === 0){
-    var html = "";
-  }
-  else{
-    var html = '<img '+cssClass+'src="img/pics/'+fhs+'.jpeg">';
+Handlebars.registerHelper('image', function(fhs, image_id) {
+  var html = "";
+  if( image_id[0] != 0){
+    var html = '<img src="img/pics/'+fhs+'.jpeg">';
   }
   return new Handlebars.SafeString(html);
 });
 
 Handlebars.registerHelper('eqKA', function(func){
-  if(func === 'k.a.' || func === 'k.A.'){
-    return ;
+  if(func[0] === 'k.a.' || func[0] === 'k.A.'){
+    console('foo')
+    return '';
   }
   return func;
 })
 
 Handlebars.registerHelper('eqWS', function(sex){
-  if(sex === 'w/s'){
+  if(sex[0] === 'w/s'){
     return 'ws';
   }
   return sex;
 })
+
+$('#search').on("keyup", function(){
+  if($('#search').val().length >= 3){
+    $('#wrapper').addClass("smooth");
+    search($('#search').val());
+  }
+});
+
+function search(q) {
+  return fetch(`/query/${q}`)
+  .then((response) => {
+   return response.json()
+ })
+  .then((json) => {
+    var docs = json.response;
+    $('#wrapper').html("");
+    $('#wrapper').append(template(docs));
+    $('#wrapper').removeClass("smooth");
+  }); 
+}

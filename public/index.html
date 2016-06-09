@@ -8,21 +8,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Personen Suche</h1> 
-  <input type="text" name="search" id="search">
+  <header>
+    <img src="img/logo.png"> <div class="button-group"><input type="text" name="search" id="search"><button><img src="/img/search_icon.png"></button></div>
+  </header>
   <div id="wrapper">
     <script id="some-template" type="text/x-handlebars-template"> 
      <div class="results" id="results">    
       {{#docs}}
       <div class="{{eqWS sex}}">
         <div class="img">
-          {{image fhs 'left' image_id}}
+          <img src="/img/test.jpeg"> <!--  {{image fhs image_id}}  -->
         </div>
         <div class="content">
           <h3>{{forename}} {{surname}}</h3>
-          {{type}} {{eqKA function}}<br>
-          {{#if mail}}E-Mail: {{mail}}{{/if}}
-          {{#if fhs}}FHS-Nummer: {{fhs}}{{/if}}
+          <p>{{type}}<br>{{eqKA function}}</p>
+          {{#if course}}<p><strong>Studienzweig:</strong><br>{{course}}</p>{{/if}}
+          {{#if mail}}<p><strong>E-Mail:</strong><br>{{mail}}</p>{{/if}}
+          {{#if fhs}}<p><strong>FHS-Nummer:</strong><br>{{fhs}}</p>{{/if}}
         </div>
       </div>
       {{/docs}}
@@ -30,23 +32,5 @@
   </script>
 </div>
 <script src="index.js"></script>
-<script type="text/javascript">
-  $('#search').on("change", function(){
-    $('#wrapper').html("");
-    search($('#search').val());
-  });
-
-  function search(q) {
-    return fetch(`/query/${q}`)
-    .then((response) => {
-     return response.json()
-   })
-    .then((json) => {
-      var docs = json.response;
-      console.log(json);
-      $('#wrapper').append(template(docs));
-    }); 
-  }
-</script>
 </body>
 </html>
