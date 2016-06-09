@@ -90,6 +90,18 @@ header .button-group {
   margin-left: 20px;
 }
 
+@media (max-width: 768px) {
+  header > img {
+    display: none;
+  }
+  header .button-group{
+    margin-left: 0;
+  }
+  .button-group > *{
+    width: initial;
+  }
+}
+
 header input {
   margin-left: 20px;
   border: 1px solid #818181;
@@ -99,20 +111,33 @@ header input {
   height: 25px;
   box-sizing: border-box;
   float: left;
+  outline: none;
 }
 
 header button {
   border: 1px solid #818181;
-  background-color: #BDBDBD;
+  background-color: #7ABC21;
   padding: 3px;
   border-radius: 0 3px 3px 0;
   height: 25px;
   width: 45px;
   border-left: none;
+  outline: none;
 }
 
 header button:active {
   background-color: #ACACAC;
+}
+
+@keyframes fade {
+  from {opacity: 1;}
+  to {opacity: 0.2;}
+}
+
+.smooth{
+  animation-name: fade;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
 }
 
 .female{
@@ -146,8 +171,21 @@ header button:active {
 }
 
 .results > div {
-  margin: 4px;
-  width: 32%;
+  width: 100%;
+}
+
+@media (min-width: 450px) {
+  .results > div {
+    margin: 4px;
+    width: 45%;
+  }
+}
+
+@media (min-width: 768px) {
+  .results > div {
+    margin: 4px;
+    width: 32%;
+  }
 }
 
 .img {
@@ -163,6 +201,28 @@ header button:active {
 .content {
   box-sizing: border-box;
   padding: 10px;
+}
+
+.results {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .results {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .results {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .results {
+    width: 1170px;
+  }
 }
 
 h3 {
