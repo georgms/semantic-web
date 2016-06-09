@@ -1,0 +1,24 @@
+{
+  "name": "semantic-web",
+  "version": "1.0.0",
+  "description": "Final Project for Semantic Web class",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Godfather27/semantic-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Godfather27/semantic-web/issues"
+  },
+  "homepage": "https://github.com/Godfather27/semantic-web#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "solr-client": "^0.6.0"
+  }
+}

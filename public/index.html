@@ -6,6 +6,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+  	function search(q, callback) {
+  		return fetch(`/query/${q}`)
+  		.then((response) => {
+			return response.json()
+		})
+		.then((json) => {
+			callback(json);
+	    });
+			
+	}
+  </script>
 </head>
 <body>
   <h1>Personen Suche</h1>

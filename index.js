@@ -1,62 +1,36 @@
-var source = $("#some-template").html(); 
-var template = Handlebars.compile(source); 
+const solr = require('solr-client');
+const client = solr.createClient('127.0.0.1', 8983, 'gettingstarted');
 
-var data = { 
-  persons: [
-    {
-      "index": 3,
-      "id": 37229,
-      "forename": "Aisha",
-      "surname": "Abdulaziz",
-      "function": "k.A.",
-      "type": "Studierende",
-      "sex": "female",
-      "image_id": "test"
-    },
-    {
-      "index": 5,
-      "id": 24234,
-      "forename": "Alan Masato",
-      "surname": "Abe",
-      "function": "k.a.",
-      "type": "Incoming",
-      "sex": "w/s",
-      "image_id": "test"
-    },
-    {
-      "index": 5,
-      "id": 24234,
-      "forename": "Alan Masato",
-      "surname": "Abe",
-      "function": "badass",
-      "type": "Incoming",
-      "sex": "male",
-      "image_id": "test"
-    }
-  ]
-};
+var express = require('express');
+var app = express();
 
-Handlebars.registerHelper('image', function(image_id, className) {
-  var cssClass = '';
-  if(className != null) {
-    cssClass = 'class="'+className+'" ';
-  }
-  var html = '<img '+cssClass+'src="img/'+image_id+'.jpeg">';
-  return new Handlebars.SafeString(html);
+app.use('/', express.static('public'));
+
+//var serve = serveStatic('public/ftp', {'index': ['index.html', 'index.htm']})
+
+app.get('/query/:input', function (req, res) {
+   search(req.params.query, function(err, obj) {
+   	res.send(obj);
+   })
 });
 
-Handlebars.registerHelper('eqKA', function(func){
-  if(func === 'k.a.' || func === 'k.A.'){
-    return ;
-  }
-  return func;
-})
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
 
-Handlebars.registerHelper('eqWS', function(sex){
-  if(sex === 'w/s'){
-    return 'ws';
-  }
-  return sex;
-})
 
-$('body').append(template(data));
+function search(qry, callback) {
+  const query = client.createQuery()
+  .q(`*${qry}*~3`)
+  .qf({'forename' : 10 , 'surname' : 8, 'email': 5, 'function': 1, 'type': 2, 'sex': 3, 'fhsNr': 8})
+  .qs(14);
+
+  client.search(query,function(err,obj){
+    console.log("hier");
+  	if(err){
+  		callback(err);
+  	}else{
+  		callback(null, obj);
+  	}
+  });
+}
