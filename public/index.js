@@ -1,47 +1,17 @@
 var source = $("#some-template").html(); 
 var template = Handlebars.compile(source); 
 
-var data = { 
-  persons: [
-    {
-      "index": 3,
-      "id": 37229,
-      "forename": "Aisha",
-      "surname": "Abdulaziz",
-      "function": "k.A.",
-      "type": "Studierende",
-      "sex": "female",
-      "image_id": "test"
-    },
-    {
-      "index": 5,
-      "id": 24234,
-      "forename": "Alan Masato",
-      "surname": "Abe",
-      "function": "k.a.",
-      "type": "Incoming",
-      "sex": "w/s",
-      "image_id": "test"
-    },
-    {
-      "index": 5,
-      "id": 24234,
-      "forename": "Alan Masato",
-      "surname": "Abe",
-      "function": "badass",
-      "type": "Incoming",
-      "sex": "male",
-      "image_id": "test"
-    }
-  ]
-};
-
-Handlebars.registerHelper('image', function(image_id, className) {
+Handlebars.registerHelper('image', function(fhs, className, image_id) {
   var cssClass = '';
   if(className != null) {
     cssClass = 'class="'+className+'" ';
   }
-  var html = '<img '+cssClass+'src="img/'+image_id+'.jpeg">';
+  if( image_id[0] === 0){
+    var html = "";
+  }
+  else{
+    var html = '<img '+cssClass+'src="img/pics/'+fhs+'.jpeg">';
+  }
   return new Handlebars.SafeString(html);
 });
 
@@ -58,5 +28,3 @@ Handlebars.registerHelper('eqWS', function(sex){
   }
   return sex;
 })
-
-$('body').append(template(data));
