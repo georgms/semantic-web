@@ -3,9 +3,9 @@ var template = Handlebars.compile(source);
 
 Handlebars.registerHelper('image', function(fhs, image_id) {
   var html = "";
-  if( image_id != "0"){
+  //if( image_id != "0"){
     var html = '<img onerror="this.src=\'http://siliconvalleyrealtyworld.com/files/2011/09/Crash_Test_Dummy.jpg\'" src="img/pics/'+fhs+'.jpeg">';
-  }
+  //}
   return new Handlebars.SafeString(html);
 });
 
