@@ -23,19 +23,21 @@ app.listen(3000, function () {
 });
 
 function search(qry, callback) {
-  request(`http://localhost:8983/solr/semantic/select`+
-    `?q=${qry}`+
-    `&wt=json`+
-    `&rows=100`+
-    `&indent=true`+
-    `&defType=dismax`+
-    `&qf=forename%5E2`+
-    `+surname%5E2`+
-    `+mail%5E1`+
-    `+function%5E1`+
-    `+type%5E1`+
-    `+sex%5E1`+
-    `+fhs%5E1`,(e,res,obj) => {callback(null, obj)});
+  let query = `http://localhost:8983/solr/semantic/select`+
+  `?q=*${qry}*`+
+  `&wt=json`+
+  `&rows=100`+
+  `&indent=true`+
+  //`&defType=dismax`+
+  `&qf=forename%5E2`+
+  `+surname%5E2`+
+  `+mail%5E1`+
+  `+function%5E1`+
+  `+type%5E1`+
+  `+sex%5E1`+
+  `+fhs%5E1`;
+  console.log(query);
+  request(query,(e,res,obj) => {callback(null, obj);});
 }
 
 /*function search(qry, callback) {
