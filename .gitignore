@@ -17,5 +17,5 @@ jspm_packages
 
 # Thumbnails
 ._*
-
+public/img/pics*
 seed.json

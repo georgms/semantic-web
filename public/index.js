@@ -3,15 +3,14 @@ var template = Handlebars.compile(source);
 
 Handlebars.registerHelper('image', function(fhs, image_id) {
   var html = "";
-  if( image_id[0] != 0){
-    var html = '<img src="img/pics/'+fhs+'.jpeg">';
+  if( image_id != "0"){
+    var html = '<img onerror="this.style.display=\'none\'" src="img/pics/'+fhs+'.jpeg">';
   }
   return new Handlebars.SafeString(html);
 });
 
 Handlebars.registerHelper('eqKA', function(func){
   if(func[0] === 'k.a.' || func[0] === 'k.A.'){
-    console('foo')
     return '';
   }
   return func;
