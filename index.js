@@ -27,16 +27,15 @@ function search(qry, callback) {
   `?q=*${qry}*`+
   `&wt=json`+
   `&rows=100`+
-  `&indent=true`+
-  //`&defType=dismax`+
+  `&indent=true`/*+
+  `&defType=dismax`+
   `&qf=forename%5E2`+
   `+surname%5E2`+
   `+mail%5E1`+
   `+function%5E1`+
   `+type%5E1`+
   `+sex%5E1`+
-  `+fhs%5E1`;
-  console.log(query);
+  `+fhs%5E1`*/;
   request(query,(e,res,obj) => {callback(null, obj);});
 }
 
