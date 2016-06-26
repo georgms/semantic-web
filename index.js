@@ -1,7 +1,7 @@
 'use strict'
 
 const solr = require('solr-client');
-const client = solr.createClient('127.0.0.1', 8983, 'semantic');
+const client = solr.createClient('personensuche_solr', 8983, 'semantic');
 const fs = require('fs');
 const request = require('request');
 
@@ -23,7 +23,7 @@ app.listen(3000, function () {
 });
 
 function search(qry, callback) {
-  let query = `http://localhost:8983/solr/semantic/select`+
+  let query = `http://personensuche_solr:8983/solr/semantic/select`+
   `?q=*${qry}*`+
   `&wt=json`+
   `&rows=100`+

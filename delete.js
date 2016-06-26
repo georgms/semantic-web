@@ -1,5 +1,5 @@
 const solr = require('solr-client');
-const client = solr.createClient('127.0.0.1', 8983, 'semantic');
+const client = solr.createClient('personensuche_solr', 8983, 'semantic');
 const fs = require('fs');
 
 var query = '*';
